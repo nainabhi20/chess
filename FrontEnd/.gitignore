@@ -1,0 +1,17 @@
+# Node dependencies
+node_modules/
+
+# Compiled files
+build/
+dist/
+
+# Environment variables
+.env
+
+# IDE files
+.vscode/
+.idea/
+
+# Cache and log files
+.cache/
+*.log
