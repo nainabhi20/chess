@@ -9,6 +9,7 @@ import { LiveGame } from './Pages/LiveGame';
 import Navbar from './Components/Header';
 import { useCookies } from 'react-cookie';
 import { checkAuthentication } from './Utils';
+import HomePage from './Pages/HomePage';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path='/matching' element={<MatchingPage/>} />
             <Route path='/game-list' element={<GameList/>} />
             <Route path='/game/:gameId' element={<LiveGame/>}/>
+            <Route path = "/" element={<HomePage/>}/>
           </Routes>
       </Router>
       </header>

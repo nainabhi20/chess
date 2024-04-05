@@ -38,7 +38,11 @@
 }
 
 body{
-  background-image: url('../istockphoto-1367106033-1024x1024.jpg');
+  /* background-image: url('../istockphoto-1367106033-1024x1024.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center; */
+  background: linear-gradient(to bottom, #2c3e50, #3498db);
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }

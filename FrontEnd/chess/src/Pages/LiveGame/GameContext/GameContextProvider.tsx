@@ -14,7 +14,11 @@ export const GameContextProvider = ({ children }: GameContextProviderProps) => {
     possibleMoveOfSelectedPiece,
     updatePossibleMoveOfSelectedPiece,
     sendMessage,
-    userId
+    userId,
+    whiteKilledPieces,
+    blackKilledPieces,
+    updateBlackKilledPieces,
+    updateWhiteKilledPieces,
   } = useGameContextProvider();
   return (
     <GameDataContext.Provider
@@ -26,6 +30,10 @@ export const GameContextProvider = ({ children }: GameContextProviderProps) => {
         updatePossibleMoveOfSelectedPiece,
         sendMessage,
         userId,
+        whiteKilledPieces,
+        blackKilledPieces,
+        updateBlackKilledPieces,
+        updateWhiteKilledPieces,
       }}
     >
       {children}

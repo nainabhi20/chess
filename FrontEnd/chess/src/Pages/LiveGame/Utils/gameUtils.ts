@@ -118,59 +118,54 @@ export const getPossibleMove = (gameDetail: GameDetail, selectedIndex: number): 
                 }
             });
             break;
-        case PieceType.QUEEN:
-            // Implement logic for queen movement (combines rook and bishop movements)
-            // Check horizontally
-            for (let i = 0; i < boardSize; i++) {
-                if (i !== col) {
-                    const index = row * boardSize + i;
-                    if (!gameDetail.board.boxes[index].pieceResponse) {
-                        possibleMoves.push(index);
-                    } else if (gameDetail.board.boxes[index].pieceResponse?.color !== selectedPiece.color) {
-                        possibleMoves.push(index);
-                        break;
-                    } else {
-                        break;
+            case PieceType.QUEEN:
+                // Check horizontally
+                for (let i = 0; i < boardSize; i++) {
+                    if (i !== col) {
+                        const index = row * boardSize + i;
+                        if (!gameDetail.board.boxes[index].pieceResponse) {
+                            possibleMoves.push(index);
+                        } else if (gameDetail?.board?.boxes?.[index]?.pieceResponse?.color !== selectedPiece.color) {
+                            possibleMoves.push(index);
+                        }
+                        // No break here, we continue scanning horizontally
                     }
                 }
-            }
-            // Check vertically
-            for (let i = 0; i < boardSize; i++) {
-                if (i !== row) {
-                    const index = i * boardSize + col;
-                    if (!gameDetail.board.boxes[index].pieceResponse) {
-                        possibleMoves.push(index);
-                    } else if (gameDetail.board.boxes[index].pieceResponse?.color !== selectedPiece.color) {
-                        possibleMoves.push(index);
-                        break;
-                    } else {
-                        break;
+                // Check vertically
+                for (let i = 0; i < boardSize; i++) {
+                    if (i !== row) {
+                        const index = i * boardSize + col;
+                        if (!gameDetail.board.boxes[index].pieceResponse) {
+                            possibleMoves.push(index);
+                        } else if (gameDetail?.board?.boxes?.[index]?.pieceResponse?.color !== selectedPiece.color) {
+                            possibleMoves.push(index);
+                        }
+                        // No break here, we continue scanning vertically
                     }
                 }
-            }
-            // Check diagonally
-            const diagonalDirections = [
-                [-1, -1], [-1, 1], [1, -1], [1, 1]
-            ];
-            diagonalDirections.forEach((diagonal) => {
-                let [dx, dy] = diagonal;
-                let i = row + dx;
-                let j = col + dy;
-                while (isValidMove(i, j)) {
-                    const index = i * boardSize + j;
-                    if (!gameDetail.board.boxes[index].pieceResponse) {
-                        possibleMoves.push(index);
-                    } else if (gameDetail.board.boxes[index].pieceResponse?.color !== selectedPiece.color) {
-                        possibleMoves.push(index);
-                        break;
-                    } else {
-                        break;
+                // Check diagonally
+                const diagonalDirections = [
+                    [-1, -1], [-1, 1], [1, -1], [1, 1]
+                ];
+                diagonalDirections.forEach((diagonal) => {
+                    let [dx, dy] = diagonal;
+                    let i = row + dx;
+                    let j = col + dy;
+                    while (isValidMove(i, j)) {
+                        const index = i * boardSize + j;
+                        if (!gameDetail.board.boxes[index].pieceResponse) {
+                            possibleMoves.push(index);
+                        } else if (gameDetail?.board?.boxes?.[index]?.pieceResponse?.color !== selectedPiece.color) {
+                            possibleMoves.push(index);
+                        }
+                        if (gameDetail.board.boxes[index].pieceResponse) {
+                            break; // Stop diagonal movement if a piece is encountered
+                        }
+                        i += dx;
+                        j += dy;
                     }
-                    i += dx;
-                    j += dy;
-                }
-            });
-            break;
+                });
+                break;
         case PieceType.KNIGHT:
             // Implement logic for knight movement
             const knightMoves = [

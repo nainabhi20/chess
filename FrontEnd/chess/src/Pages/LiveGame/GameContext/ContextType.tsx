@@ -7,6 +7,10 @@ export type GameContext = {
     updatePossibleMoveOfSelectedPiece: (e: number[]) => void;
     sendMessage: (destination: string, body: any) => void;
     userId: number | undefined;
+    whiteKilledPieces: KilledPieces | undefined;
+    blackKilledPieces: KilledPieces | undefined;
+    updateBlackKilledPieces: (e: KilledPieces) => void;
+    updateWhiteKilledPieces: (e: KilledPieces) => void;
 }
 
 export enum TColor {
@@ -36,7 +40,7 @@ export type TBox = {
 export type Move = {
     from: string;
     to: string;
-    piece: Piece;
+    pieceResponse: Piece;
 }
 
 type Piece = {
@@ -56,4 +60,13 @@ export enum PieceType {
     KING,
     QUEEN,
     KNIGHT,
+}
+
+export type KilledPieces = {
+    [PieceType.PAWN]: number;
+    [PieceType.QUEEN]: number;
+    [PieceType.KING]: number;
+    [PieceType.KNIGHT]: number;
+    [PieceType.BISHOP]: number;
+    [PieceType.ROOK]: number;
 }
